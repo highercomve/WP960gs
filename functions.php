@@ -1,4 +1,5 @@
 <?php
+if ( ! isset( $content_width ) ) $content_width = 680;
 
 add_action( 'after_setup_theme', 'twentyten_setup' );
 
