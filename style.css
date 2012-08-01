@@ -22,9 +22,11 @@ Tags: black,gray,white,one-column,two-columns,fixed-width,custom-menu,featured-i
 -------------------------------------------------------------- */
 
 #header {
-	margin-top: 20px;
+	margin-top: 40px;
 }
-
+#branding {
+	margin-bottom: 20px;
+}
 #site-title {
 	font-size      : 32px;
 	margin-bottom  : 20px;
