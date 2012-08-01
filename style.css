@@ -5,7 +5,7 @@ Description: Wordpress theme using 960.gs GridSystem
 Version: 1.0
 License: GNU General Public License
 License URI: license.txt
-Tags: grid system, custom menu
+Tags: black,gray,white,one-column,two-columns,fixed-width,custom-menu,featured-images
 */
 
 
@@ -13,6 +13,7 @@ Tags: grid system, custom menu
 
 /* =Global Elements
 -------------------------------------------------------------- */
+
 @import url('css/globals.css');
 
 /* =Header

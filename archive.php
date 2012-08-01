@@ -20,10 +20,10 @@ get_header(); ?>
 			rewind_posts();
 			get_template_part( 'loop', 'archive' );
 		?>
-	</div><!-- #main -->
+	</div> <!-- #main -->
 	<div id="sidebar" class="grid4">
 		<?php get_sidebar(); ?>
-	</div>
+	</div> <!-- #sidebar -->
 	
 </div><!-- .row -->
 
