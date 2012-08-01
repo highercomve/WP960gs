@@ -1,77 +1,59 @@
-<?php
-/**
- * The loop that displays an attachment.
- *
- * The loop displays the posts and the post content.  See
- * http://codex.wordpress.org/The_Loop to understand it and
- * http://codex.wordpress.org/Template_Tags to understand
- * the tags used in it.
- *
- * This can be overridden in child themes with loop-attachment.php.
- *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.2
- */
-?>
-
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
-				<?php if ( ! empty( $post->post_parent ) ) : ?>
-					<p class="page-title"><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php echo esc_attr( sprintf( __( 'Return to %s', 'twentyten' ), strip_tags( get_the_title( $post->post_parent ) ) ) ); ?>" rel="gallery"><?php
-						/* translators: %s - title of parent post */
-						printf( __( '<span class="meta-nav">&larr;</span> %s', 'twentyten' ), get_the_title( $post->post_parent ) );
-					?></a></p>
-				<?php endif; ?>
-
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<h2 class="entry-title"><?php the_title(); ?></h2>
-
-					<div class="entry-meta">
-						<?php
-							printf( __( '<span class="%1$s">By</span> %2$s', 'twentyten' ),
-								'meta-prep meta-prep-author',
-								sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
-									get_author_posts_url( get_the_author_meta( 'ID' ) ),
-									esc_attr( sprintf( __( 'View all posts by %s', 'twentyten' ), get_the_author() ) ),
-									get_the_author()
-								)
-							);
-						?>
-						<span class="meta-sep">|</span>
-						<?php
-							printf( __( '<span class="%1$s">Published</span> %2$s', 'twentyten' ),
-								'meta-prep meta-prep-entry-date',
-								sprintf( '<span class="entry-date"><abbr class="published" title="%1$s">%2$s</abbr></span>',
-									esc_attr( get_the_time() ),
-									get_the_date()
-								)
-							);
-							if ( wp_attachment_is_image() ) {
-								echo ' <span class="meta-sep">|</span> ';
-								$metadata = wp_get_attachment_metadata();
-								printf( __( 'Full size is %s pixels', 'twentyten' ),
-									sprintf( '<a href="%1$s" title="%2$s">%3$s &times; %4$s</a>',
-										wp_get_attachment_url(),
-										esc_attr( __( 'Link to full-size image', 'twentyten' ) ),
-										$metadata['width'],
-										$metadata['height']
-									)
-								);
-							}
-						?>
-						<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
-					</div><!-- .entry-meta -->
-
-					<div class="entry-content">
-						<div class="entry-attachment">
-<?php if ( wp_attachment_is_image() ) :
-	$attachments = array_values( get_children( array( 'post_parent' => $post->post_parent, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID' ) ) );
-	foreach ( $attachments as $k => $attachment ) {
-		if ( $attachment->ID == $post->ID )
-			break;
-	}
-	$k++;
+	<?php if ( ! empty( $post->post_parent ) ) : ?>
+		<p class="page-title">
+			<a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php echo esc_attr( sprintf( __( 'Return to %s', 'twentyten' ), strip_tags( get_the_title( $post->post_parent ) ) ) ); ?>" rel="gallery">
+				<?php printf( __( '<span class="meta-nav">&larr;</span> %s', 'twentyten' ), get_the_title( $post->post_parent ) ); ?>
+			</a>
+		</p>
+	<?php endif; ?>
+	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<h2 class="entry-title"><?php the_title(); ?></h2>
+		<div class="entry-meta">
+		<?php
+			printf( __( '<span class="%1$s">By</span> %2$s', 'twentyten' ),
+				'meta-prep meta-prep-author',
+				sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+					get_author_posts_url( get_the_author_meta( 'ID' ) ),
+					esc_attr( sprintf( __( 'View all posts by %s', 'twentyten' ), get_the_author() ) ),
+					get_the_author()
+				)
+			);
+		?>
+		<span class="meta-sep">|</span>
+		<?php
+			printf( __( '<span class="%1$s">Published</span> %2$s', 'twentyten' ),
+				'meta-prep meta-prep-entry-date',
+				sprintf( '<span class="entry-date"><abbr class="published" title="%1$s">%2$s</abbr></span>',
+					esc_attr( get_the_time() ),
+					get_the_date()
+				)
+			);
+			if ( wp_attachment_is_image() ) {
+				echo ' <span class="meta-sep">|</span> ';
+				$metadata = wp_get_attachment_metadata();
+				printf( __( 'Full size is %s pixels', 'twentyten' ),
+					sprintf( '<a href="%1$s" title="%2$s">%3$s &times; %4$s</a>',
+						wp_get_attachment_url(),
+						esc_attr( __( 'Link to full-size image', 'twentyten' ) ),
+						$metadata['width'],
+						$metadata['height']
+					)
+				);
+			}
+		?>
+		<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
+	</div><!-- .entry-meta -->
+	<div class="entry-content">
+		<div class="entry-attachment">
+		<?php 
+			if ( wp_attachment_is_image() ) :
+			$attachments = array_values( get_children( array( 'post_parent' => $post->post_parent, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID' ) ) );
+			foreach ( $attachments as $k => $attachment ) {
+				if ( $attachment->ID == $post->ID )
+					break;
+			}
+		$k++;
 	// If there is more than 1 image attachment in a gallery
 	if ( count( $attachments ) > 1 ) {
 		if ( isset( $attachments[ $k ] ) )

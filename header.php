@@ -1,15 +1,3 @@
-<?php
-/**
- * The Header for our theme.
- *
- * Displays all of the <head> section and everything up till <div id="main">
- *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
- */
-?>
-
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -44,11 +32,11 @@
 				<div class="row">
 					<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 					
-					<<?php echo $heading_tag; ?> id="site-title" class="grid3">
+					<<?php echo $heading_tag; ?> id="site-title" class="grid4">
 						<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 					</<?php echo $heading_tag; ?>>
 				
-					<div id="site-description" class="grid9 right"><?php bloginfo( 'description' ); ?></div>
+					<div id="site-description" class="grid8 right"><?php bloginfo( 'description' ); ?></div>
 				</div> <!-- .row -->	
 			</div><!-- #branding -->
 
