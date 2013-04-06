@@ -26,8 +26,8 @@ function twentyten_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Navigation', 'twentyten' ),
 		'footer-menu' => __( 'Footer Navigation' , 'twentyten'),
-		'menu-ramdon' => __( 'MENU INVENTAO', 'twentyten')
-	));
+		'sobre-headder' => __( 'Menu de arriba arriba' , 'twentyten')
+	) );
 }
 endif;
 
@@ -56,8 +56,7 @@ function twentyten_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'twentyten_excerpt_length' );
 
 function twentyten_continue_reading_link() {
-	//return ' <a href="'. get_permalink() . '">' . __( 'Lee mas detalles pajuo <span class="meta-nav">&rarr;</span>', 'twentyten' ) . '</a>';
-	return '';
+	return ' <a href="'. get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyten' ) . '</a>';
 }
 
 function twentyten_auto_excerpt_more( $more ) {
@@ -138,6 +137,17 @@ function twentyten_widgets_init() {
 		'after_title' => '</h3>',
 	) );
 
+	// Area nueva creada en clases
+	register_sidebar( array(
+		'name' => __( 'Header Widget Area', 'twentyten' ),
+		'id' => 'header-widget-area',
+		'description' => __( 'Area de widgets sobre el Header', 'twentyten' ),
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
 	// Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
 	register_sidebar( array(
 		'name' => __( 'Secondary Widget Area', 'twentyten' ),
@@ -156,16 +166,6 @@ function twentyten_widgets_init() {
 		'description' => __( 'The first footer widget area', 'twentyten' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'Nueva AREA 3000', 'twentyten' ),
-		'id' => 'nueva-area-3000',
-		'description' => __( 'Esta es el area que me estoy inventando', 'twentyten' ),
-		'before_widget' => '<div id="%1$s" class="grid3 %2$s">',
-		'after_widget' => '</div>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );

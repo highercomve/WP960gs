@@ -51,10 +51,22 @@ a img {
   margin: 0 auto;
   position: relative; }
 
-.grid1, .grid2, .grid3, .grid4, .grid5, .grid6, .grid7, .grid8, .grid9, .grid10, .grid11, .grid12, .grid13, .grid14,
-.grid15, .grid16, .grid17, .grid18, .grid19, .grid20, .grid21, .grid22, .grid23, .grid24 {
+.grid1,.grid2,.grid3,.grid4,.grid5,.grid6,.grid7,.grid8,.grid9,.grid10,.grid11,.grid12,.grid13,.grid14,.grid15,.grid16,.grid17,.grid18,.grid19,.grid20,.grid21,.grid22,.grid23,.grid24 {
   float: left;
-  margin-left: 20px; }
+  margin-left: 20px;
+  
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.grid1 img,.grid2 img,.grid3 img,.grid4 img,.grid5 img,.grid6 img,.grid7 img,.grid8 img,.grid9 img,.grid10 img,.grid11 img,.grid12 img,.grid13 img,.grid14 img,.grid15 img,.grid16 img,.grid17 img,.grid18 img,.grid19 img,.grid20 img,.grid21 img,.grid22 img,.grid23 img,.grid24 img {
+  max-width: 100%;
+  image-rendering: optimizeQuality;
+}
+
+
 
 .grid1 {  width: 60px; }
 .grid2 {  width: 140px; }

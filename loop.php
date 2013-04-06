@@ -6,52 +6,42 @@
 	</div><!-- #nav-above -->
 <?php endif; ?>
 
-<?php if ( ! have_posts() ) : ?>
-	<div id="post-0" class="post error404 not-found">
-		<h1 class="entry-title"><?php _e( 'Not Found', 'twentyten' ); ?></h1>
-		<div class="entry-content">
-			<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'twentyten' ); ?></p>
-			<?php get_search_form(); ?>
-		</div><!-- .entry-content -->
-	</div><!-- #post-0 -->
+<div class="row">
+
+<?php if ( have_posts() ): while( have_posts() ): the_post(); ?>
+
+	<div class="articulo grid3">
+		<div class="imagen-destacada">
+			<a href="<?php the_permalink() ?>">
+				<?php the_post_thumbnail("thumbnail") ?>
+			</a>
+		</div>
+		<div class="detalle">
+			<h2>
+					<a href="<?php the_permalink() ?>">
+						<?php the_title() ?>
+					</a>
+				</h2>
+				<div class="author">
+					<?php the_author_posts_link() ?>
+				</div>
+				<div class="hora">
+					<?php the_time() ?> / <?php the_time(get_option('date_format')); ?>
+				</div>
+				<div class="resumen">
+					<?php the_excerpt() ?>
+				</div>
+		</div>
+	</div>
+
+<?php endwhile; else: ?>
+
+	<div class="nohaynada">
+		<h2>
+			Esta pagina esta vacia!!!
+		</h2>
+	</div>
+
 <?php endif; ?>
 
-<div class="articulos row pinterest_container">
-<!-- Inicio de ciclo normal de Wordpress -->
-<?php if( have_posts() ): while( have_posts() ): the_post(); ?>
-	<!-- Ciclo del index -->
-	<article class="articulo grid3 pinterest_box">
-		<div class="interno">
-			<header>
-				<div class="thumbnail-articulo">
-					<a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
-						<?php the_post_thumbnail("thumbnail"); ?>
-					</a>
-				</div> <!-- .thumbnail-articulo -->
-				
-				<h3 class="titulo-articulo">
-					<a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
-						<?php the_title(); ?>
-					</a>
-				</h3> <!-- .articulo-titulo -->
-
-				<small class="meta">
-						<?php the_time('F jS, Y') ?>
-						, escrito por: 
-						<?php the_author_posts_link() ?>
-				</small> <!-- .meta -->
-			</header>
-			<div class="resumen-articulo">
-				<?php the_excerpt(); ?>
-			</div> <!-- .resumen-titulo -->
-			
-			<footer>
-				<div class="postmetadata meta">
-	        Archivado en: <?php the_category(' / '); ?>
-	      </div>
-			</footer>
-		</div>
-	</article> <!-- .articulo -->
-<?php endwhile; endif; ?>
-
-</div> <!-- .articulos -->
+</div>
