@@ -17,40 +17,42 @@
 <?php endif; ?>
 
 <div class="articulos row pinterest_container">
+
+
 <!-- Inicio de ciclo normal de Wordpress -->
 <?php if( have_posts() ): while( have_posts() ): the_post(); ?>
 	<!-- Ciclo del index -->
-	<article class="articulo grid3 pinterest_box">
-		<div class="interno">
-			<header>
-				<div class="thumbnail-articulo">
-					<a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
-						<?php the_post_thumbnail("thumbnail"); ?>
-					</a>
-				</div> <!-- .thumbnail-articulo -->
-				
-				<h3 class="titulo-articulo">
-					<a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
-						<?php the_title(); ?>
-					</a>
-				</h3> <!-- .articulo-titulo -->
+	<article class="articulo grid9 pinterest_box">
+		<header>
+			<div class="thumbnail-articulo grid3">
+				<a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
+					<?php the_post_thumbnail("large"); ?>
+				</a>
+			</div> <!-- .thumbnail-articulo -->
+			<div class="clear"></div>
+			<h3 class="titulo-articulo">
+				<a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
+					<?php the_title(); ?>
+				</a>
+			</h3> <!-- .articulo-titulo -->
 
-				<small class="meta">
-						<?php the_time('F jS, Y') ?>
-						, escrito por: 
-						<?php the_author_posts_link() ?>
-				</small> <!-- .meta -->
-			</header>
-			<div class="resumen-articulo">
-				<?php the_excerpt(); ?>
-			</div> <!-- .resumen-titulo -->
-			
-			<footer>
-				<div class="postmetadata meta">
-	        Archivado en: <?php the_category(' / '); ?>
-	      </div>
-			</footer>
-		</div>
+			<small class="meta">
+					<?php the_time('F jS, Y') ?>
+					, escrito por: 
+					<?php the_author_posts_link() ?>
+			</small> <!-- .meta -->
+		</header>
+		<div class="resumen-articulo">
+			<?php the_excerpt(); ?>
+		</div> <!-- .resumen-titulo -->
+		<a class="btn" href="<?php the_permalink() ?>" title="<?php the_title() ?>">
+			Ver mas
+		</a>
+		<footer>
+			<div class="postmetadata meta">
+        Archivado en: <?php the_category(' / '); ?>
+      </div>
+		</footer>
 	</article> <!-- .articulo -->
 <?php endwhile; endif; ?>
 
