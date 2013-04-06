@@ -11,10 +11,10 @@
 	query_posts( "argumento1=valor&argumento2=valor&argumento3=valor&..." );
 
 	*/
-	global $query_string,$post;
+	// global $query_string,$post;
 	// print_r($wp_query);
 
-	query_posts($query_string."&cat=1");
+	// query_posts($query_string."&cat=1");
 
  ?>
 
@@ -51,6 +51,9 @@
 				</div>
 				<div class="resumen">
 					<?php the_excerpt() ?>
+				</div>
+				<div class="paises">
+					<?php the_terms($post->ID, "pais", "", " ", "") ?>
 				</div>
 		</div>
 	</div>
