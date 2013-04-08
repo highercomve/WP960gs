@@ -58,7 +58,7 @@ class LastBlogNews extends WP_Widget {
         -->
         <?php echo the_title() ?>
       </li>
-    <?
+    <?php
     endwhile;
     echo "</ul>";
     $post = $post_old; // Save the post object.

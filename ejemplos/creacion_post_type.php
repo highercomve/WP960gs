@@ -1,8 +1,5 @@
 
 <?php 
-
-// Crear post type
-
 /*
   Esto debe colocarse dentro del functions.php
 */
@@ -10,6 +7,7 @@
 /*------------------------------------------------
 Crea el Tipo de Post para las productos
 ---------------------------------------------------*/
+
 function create_post_type() {
   register_post_type( 'productos',
     array(
@@ -28,7 +26,7 @@ add_action( 'init', 'create_post_type' );
 
 /*------------------------------------------------
 Crear Categorias para este Tipo de post
-*/------------------------------------------------
+--------------------------------------------------*/
 function customsCatsForProductos_init() {
   register_taxonomy(
     'categorias',
@@ -41,7 +39,5 @@ function customsCatsForProductos_init() {
     )
   );
 } 
-
-
 
 ?>
